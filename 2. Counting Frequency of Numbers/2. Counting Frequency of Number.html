@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>JS Task 2</title>
+    <style>
+        input{
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="container pt-3">
+   
+    <h3>Counting Frequency of Number</h3>
+
+    <p>Given Numvers: <span id="givenNumbers"></span></p>
+    <br>
+    <div id="output"></div>
+
+
+    <script type="text/javascript">
+        let numberArray = [1, 2, 3, 4, 5, 6, 1, 32, 4, 2, 3, 456, 234, 2, 3, 423, 0];
+        let total = 0;
+        let disArray = [];
+        let givenNumbers = "";
+        let len = numberArray.length;
+        for(let i=0; i<len; i++){
+            if(i>0){
+                    givenNumbers = givenNumbers + ", " + numberArray[i].toString();
+                } else{
+                    givenNumbers = givenNumbers + numberArray[i].toString();
+                }
+        }
+        numberArray.sort();
+        let i = 0;
+
+        while (i < len) {
+            total = 0;
+            let value = numberArray[i];
+            while (value == numberArray[i]) {
+                i++;
+                total++;
+            }
+            disArray.push(value, total);
+        }
+        let len2 = disArray.length;
+        let result = "";
+        for (let j = 0; j < len2; j += 2) {
+            if (disArray[j + 1] == 1){
+                result = result + disArray[j].toString() + " - " + disArray[j + 1].toString() + " time <br>";
+            }
+            else{
+                result = result + disArray[j].toString() + " - " + disArray[j + 1].toString() + " times <br>";
+            }
+        }
+        document.getElementById("givenNumbers").innerHTML = givenNumbers;
+        document.getElementById("output").innerHTML = result;
+    </script>
+</body>
+</html>

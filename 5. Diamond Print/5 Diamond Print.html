@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>JS Task 2</title>
+    <style>
+        input{
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="container pt-3">
+   
+    <h3>Drawing Diamond Shape</h3>
+    <input type="number" name="input" placeholder="Enter shape size" id="input">
+    <br>
+    <button class="btn btn-primary" onclick="diamondPrint()">Click Here</button>
+    <div id="output"></div>
+
+
+    <script>
+    function diamondPrint(){
+        let size = document.getElementById("input").value;
+        let result = "<pre>";
+        let spaceSize = size * 2 -1;
+        let len = spaceSize;
+        for(let i=1; i<= len ; i++){
+            let currentSpace = spaceSize % size ; // 
+            let space="" ;
+            for(let j=0 ; j< currentSpace ; j++){
+            space +=" ";
+            result += " ";
+            }
+            
+            let text="" ;
+            for(let j=1; j<= (len - (currentSpace*2)) ; j++){
+                text += "*";
+                result += "*";
+            }
+            console.log(space+text);
+            result +="<br>";
+            if(i < size)
+            spaceSize--;
+            else
+            spaceSize++;
+            
+        }
+        result += "</pre>";
+        document.getElementById("output").innerHTML = result;
+    }
+    </script>
+</body>
+</html>

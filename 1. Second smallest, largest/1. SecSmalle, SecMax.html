@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>JS Task 2</title>
+    <style>
+        input{
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="container pt-3">
+   
+    <h3>Finding Second Largest Number and Second Smallest Number</h3>
+    <br>
+    <p>Your given numbers: <span style="font-weight: bold;" id="givenNumbers"></span></p>
+    <div id="output"></div>
+
+
+    <script type = "text/javascript">
+        let numbers = [20,5,3,7,10,9,100,234,455,2323,567,2,78,4,7];
+        let givenNumbers = "";
+        let secondSmall = 10000000;
+        let firstSmall = secondSmall;
+
+        let secMax=0;
+
+        let firstMax=secMax;
+        let len=numbers.length;
+
+        //console.log(len);
+        for(let i=0 ; i<len ; i++){
+            if(i>0){
+                givenNumbers = givenNumbers + ", " + numbers[i].toString();
+            } else{
+                givenNumbers = givenNumbers + numbers[i].toString();
+            }
+            
+            if(i==0)
+            {
+                secMax=numbers[i];
+                secondSmall=numbers[i];
+                firstMax=numbers[i];
+                firstSmall=numbers[i];
+            }
+            else{
+
+                if(firstMax < numbers[i] ){
+                    secMax=firstMax;
+                    firstMax=numbers[i];
+                }
+                else{
+                    if(secMax < numbers[i])
+                    {
+                        secMax=numbers[i];
+                    }
+                }
+                if(firstSmall > numbers[i])
+                {
+                    secondSmall=firstSmall;
+                    firstSmall = numbers[i];
+                }
+                else{
+                    if(secondSmall >  numbers[i])
+                    {
+                        secondSmall=numbers[i];
+                    }
+                }
+            }
+        }
+        document.getElementById("givenNumbers").innerHTML= givenNumbers;
+        let text = "<p>Second Smallest Number is " + secondSmall +"</p>" + "<p>" + "Second Largest Number is " + secMax + "</p>" ;
+        document.getElementById("output").innerHTML = text ;
+    </script>
+</body>
+</html>
